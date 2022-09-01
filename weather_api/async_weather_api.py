@@ -7,7 +7,7 @@ import tkinter.messagebox as mb
 from random import uniform
 import emoji
 import time
-
+from rec_data import record_data
 
 def log_dec(func):
     def wrap(*args, **kwargs):
@@ -88,6 +88,11 @@ def add_random_places(count, places):
         places.append((uniform(-90, 90), uniform(-180, 180)))
 
 
+def recording_data(lst):
+    record_data(lst[2])
+    record_data(lst[5])
+
+
 start = time.time()
 
 with open('places.txt') as f:
@@ -101,7 +106,7 @@ weather_status = {'Rain': emoji.emojize('rain :umbrella_with_rain_drops:'), 'Cle
                   'Clouds': emoji.emojize('clouds :cloud:'), 'Snow': emoji.emojize('snow :snowflake:'),
                   'Fog': emoji.emojize('fog :fog:')}
 
-add_random_places(5, places)
+add_random_places(1, places)
 responses_lst = get_responses_lst(places)
 
 lst, places_name, good_place = [], [], []
@@ -113,6 +118,8 @@ for dct in lst:
         if dct['name'] not in places_name:
             places_name.append(dct['name'])
             good_place.append(dct)
+
+recording_data(lst)
 
 window = Tk()
 window.title("Weather Here")
