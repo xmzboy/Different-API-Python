@@ -1,3 +1,5 @@
+"""async_weather_api.py is MAIN file. This file is the first version work with weather api"""
+
 import requests
 import json
 from tkinter import *
