@@ -114,7 +114,6 @@ def recording_data(lst):
 def delete_place():
     pass
 
-
 def settings():
     settings_window = Toplevel(window)
     settings_window.title("Settings")
