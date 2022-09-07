@@ -1,6 +1,7 @@
 import requests
 import grequests
 import json
+from requests import Timeout
 
 
 def connection(places, place):
@@ -14,6 +15,9 @@ def one_connect(lats, lons):
     with requests.Session() as sess:
         try:
             r = sess.get(url, params=params, timeout=1)
+        except Timeout:
+            print('Timeout')
+            return {'name': 'Timeout'}
         except Exception as ex:
             print(ex)
             return {}
